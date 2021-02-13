@@ -1,0 +1,59 @@
+@use 'base';
+
+@mixin centerer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+body {
+    margin: 0;
+    font: 100% Helvetica, sans-serif;
+}
+
+@import 'navigation';
+
+ol li span{
+    color: base.$color-pink;
+    padding-left: 16px;
+}
+
+#content { padding:0 16px; }
+
+/* use a mixing for centering */
+/* https://css-tricks.com/snippets/sass/centering-mixin/ */
+
+/* Mixins normally set many properties */
+.container-center {
+    position: relative;
+}
+
+/*.center {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}*/
+
+%box-shared {
+    @include centerer;
+    width: 80%;
+    border: 2px solid base.$color-pink;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.box1 {
+    @extend  %box-shared;
+    margin-top: 30px;
+}
+
+.box2 {
+    @extend  %box-shared;
+    margin-top: 100px;
+    background-color: lighten(base.$color-pink, 20%); 
+}
+
+img { margin-bottom: 20px;}
